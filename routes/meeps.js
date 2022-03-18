@@ -23,6 +23,27 @@ router.get('/', async (req, res, next) => {
     });
 });
 
+router.get('/:id/delete', async (req, res, next) => {
+  const id = req.params.id;
+  await pool.promise()
+  .query('DELETE FROM meeps WHERE id = ?', [id])
+  .then((response) => {
+    if (response[0].affectedRows == 1) {
+      res.redirect('/meeps');
+    } else {
+      res.status(400).redirect('/meeps');
+    }
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({
+      meep: {
+        error: 'Error getting meep'
+      }
+    })
+  });
+});
+
 router.post('/', async (req, res, next) => {
   const meep = req.body.body;
   if (meep.length < 3) {
@@ -52,5 +73,7 @@ router.post('/', async (req, res, next) => {
     })
   });
 });
+
+
 
 module.exports = router;

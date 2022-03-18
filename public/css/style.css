@@ -3,6 +3,9 @@
   margin: 0; }
 
 body {
-  border: 1px solid red; }
+  background-color: #fff9c4; }
+
+form {
+  margin-top: 10px; }
 
 /*# sourceMappingURL=style.css.map */
