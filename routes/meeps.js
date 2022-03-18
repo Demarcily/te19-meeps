@@ -1,9 +1,56 @@
 const express = require('express');
 const router = express.Router();
+const pool = require('../database');
 
-/* GET users listing. */
-router.get('/', (req, res, next) => {
-  res.send('Detta blir vad servern visar');
+
+router.get('/', async (req, res, next) => {
+  await pool.promise()
+    .query('SELECT * FROM meeps')
+    .then(([rows, fields]) => {
+      res.render('meeps.njk', {
+        meeps: rows,
+        title: 'Meeps',
+        layout: 'layout.njk'
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({
+        meeps: {
+          error: 'Error getting meeps'
+        }
+      })
+    });
+});
+
+router.post('/', async (req, res, next) => {
+  const meep = req.body.body;
+  if (meep.length < 3) {
+    res.status(400).json({
+      meep: {
+          error: 'Message is too short'
+      }
+    });
+  }
+
+  await pool.promise()
+  .query('INSERT INTO meeps (body) VALUES (?)', [meep])
+  .then((response) => {
+    console.log(response[0].affectedRows);
+    if (response[0].affectedRows == 1) {
+      res.redirect('/meeps');
+    } else {
+      res.send('Message failed to send');
+    }
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({
+      meep: {
+        error: 'Error getting messages'
+      }
+    })
+  });
 });
 
 module.exports = router;
