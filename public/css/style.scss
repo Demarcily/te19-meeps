@@ -7,6 +7,24 @@ body {
   background-color: rgb(255, 249, 196);
 }
 
-form {
-  margin-top: 10px;
+.small-text {
+  font-size: 10px;
+}
+
+.f-right {
+  float:right;
+}
+
+.c-reverse {
+  display:flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+}
+
+.iblock {
+  display:inline-block
+}
+
+.mtop {
+  margin-top:10px;
 }

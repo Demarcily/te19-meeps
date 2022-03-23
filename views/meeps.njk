@@ -2,7 +2,7 @@
 {% block content %}
   <main class="container">
     <div>
-      <form action="/meeps" method="post">
+      <form action="/meeps" method="post" class="mtop">
         <div class="input-group input-group-sm mb-3">
           <span class="input-group-text" id="inputGroup-sizing-sm">Message</span>
           <input class="form-control" 
@@ -10,7 +10,6 @@
             name="body" 
             id="body" 
             value="{{ body }}" 
-            placeholder="N/A" 
             required 
             aria-label="Sizing example input" 
             aria-describedby="inputGroup-sizing-sm">
@@ -18,19 +17,36 @@
         </div>
       </form>
     </div>
+    <div class="c-reverse">
     {% for meep in meeps %}
-    <div class="card mb-3">
-      <div class="card-body">
-        <div>
-          <p class="card-title">{{meep.body}}</p>
-          <p class="card-text">{{meep.created}}</p>
-        </div>
-        <div class="d-flex">
-          <a href="/meeps/{{meep.id}}/delete" class="btn btn-danger">DELETE</a>
+      <div class="card mb-3">
+        <div class="card-body">
+          <div>
+            <p class="card-title">{{meep.body}}</p>
+            <p class="card-text small-text">Posted: {{meep.created}}</p>
+          </div>
+          <div class="iblock">
+            <form action="/meeps/{{meep.id}}/edit" method="post" class="mtop">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Edit</span>
+                <input class="form-control" 
+                  type="text" 
+                  name="body"
+                  id="body"
+                  required 
+                  aria-label="Sizing example input" 
+                  aria-describedby="inputGroup-sizing-sm">
+                  <button class="btn btn-primary" type="submit">Update</button>
+              </div>
+            </form>
+          </div>
+          <div class="f-right">
+            <a href="/meeps/{{meep.id}}/delete" class="btn btn-danger btn-sm mtop">DELETE</a>
+          </div>
         </div>
       </div>
-    </div>
     {% endfor %}
+    </div>
   </main>
 <script src = "/js/complete.js"></script>
 

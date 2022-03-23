@@ -74,6 +74,27 @@ router.post('/', async (req, res, next) => {
   });
 });
 
+router.post('/:id/edit', async (req, res, next) => {
+  const id = req.params.id;
+  const meep = req.body.body;
+  if (meep.length < 3) {
+    res.status(400).json({
+      meep: {
+          error: 'Message is too short'
+      }
+    });
+  }
+  await pool.promise()
+  .query('UPDATE meeps SET body = ?, edited = now() WHERE id = ?', [meep, id])
+  .then((response) => {
+    console.log(response);
+    res.redirect('/meeps');
+  })
+  .catch(err => {
+    console.log(err);
+  });
+});
+
 
 
 module.exports = router;
