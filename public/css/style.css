@@ -5,6 +5,10 @@
 body {
   background-color: #fff9c4; }
 
+form {
+  display: flex;
+  flex-direction: row; }
+
 .small-text {
   font-size: 10px; }
 
@@ -21,5 +25,15 @@ body {
 
 .mtop {
   margin-top: 10px; }
+
+.collapsible {
+  font-size: 10px;
+  margin-top: 10px;
+  border: none;
+  background: none;
+  text-decoration: underline; }
+
+.content {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */
