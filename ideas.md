@@ -1,1 +1,3 @@
 - Edit button that shows the input field.
+- Find a way to shorten the amount of time information given. (Don't need GMT+0100 and all after that)
+- Add edited date when meep has been edited atleast once. (Maybe detect difference in time?)
