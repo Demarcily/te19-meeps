@@ -26,9 +26,9 @@
             <p class="card-text small-text">Posted: {{meep.created}}</p>
           </div>
           <div class="iblock">
-            <form action="/meeps/{{meep.id}}/edit" method="post" class="mtop">
+            <button class="collapsible">Edit</button>
+            <form action="/meeps/{{meep.id}}/edit" method="post" class="mtop content">
               <div class="input-group input-group-sm">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Edit</span>
                 <input class="form-control" 
                   type="text" 
                   name="body"
@@ -37,12 +37,12 @@
                   required 
                   aria-label="Sizing example input" 
                   aria-describedby="inputGroup-sizing-sm">
-                  <button class="btn btn-primary" type="submit">Save</button>
+                <button class="btn btn-primary" type="submit">Save</button>
               </div>
             </form>
           </div>
           <div class="f-right">
-            <a href="/meeps/{{meep.id}}/delete" class="btn btn-danger btn-sm mtop">DELETE</a>
+            <a href="/meeps/{{meep.id}}/delete" class="btn btn-danger btn-sm">DELETE</a>
           </div>
         </div>
       </div>
