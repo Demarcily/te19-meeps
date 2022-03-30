@@ -12,3 +12,13 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 }
+
+var order = document.getElementById("c-reverse");
+
+sortOld.onclick = function () {
+  order.style.flexDirection = "column";
+}
+
+sortNew.onclick = function () {
+  order.style.flexDirection = "column-reverse";
+}

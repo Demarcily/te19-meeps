@@ -3,7 +3,7 @@
   <main class="container">
     <div>
       <form action="/meeps" method="post" class="mtop">
-        <div class="input-group input-group-sm mb-3">
+        <div class="input-group input-group-sm">
           <span class="input-group-text" id="inputGroup-sizing-sm">Message</span>
           <input class="form-control" 
             type="text" 
@@ -17,7 +17,16 @@
         </div>
       </form>
     </div>
-    <div class="c-reverse">
+    <div class="mbot">
+      <button class="collapsible" id="order">Change Order</button>
+      <div class="content">
+        <div class="orderBy">
+          <button id="sortOld">Oldests top</button>
+          <button id="sortNew">Newest top</button>
+        </div>
+      </div>
+    </div>
+    <div id="c-reverse">
     {% for meep in meeps %}
       <div class="card mb-3">
         <div class="card-body">
@@ -49,7 +58,4 @@
     {% endfor %}
     </div>
   </main>
-<script src = "/js/complete.js"></script>
-
-
 {% endblock %}

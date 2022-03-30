@@ -9,22 +9,45 @@ form {
   display: flex;
   flex-direction: row; }
 
+div .orderBy {
+  margin-bottom: 10px; }
+
 .small-text {
   font-size: 10px; }
 
 .f-right {
   float: right; }
 
-.c-reverse {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: center; }
-
 .iblock {
   display: inline-block; }
 
 .mtop {
   margin-top: 10px; }
+
+.mbot {
+  margin-bottom: 10px; }
+
+.orderBy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; }
+  .orderBy > button {
+    padding: 5px;
+    border: 1px solid grey;
+    border-radius: 2px;
+    background-color: white;
+    margin-bottom: 2px; }
+
+#c-reverse {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center; }
+
+#order {
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid grey;
+  padding: 5px 10px 5px 10px; }
 
 .collapsible {
   font-size: 10px;
