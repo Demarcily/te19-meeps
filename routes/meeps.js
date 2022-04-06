@@ -5,7 +5,7 @@ const pool = require('../database');
 
 router.get('/', async (req, res, next) => {
   await pool.promise()
-    .query('SELECT * FROM meeps')
+    .query('SELECT * FROM limmuy_meeps')
     .then(([rows, fields]) => {
       res.render('meeps.njk', {
         meeps: rows,
@@ -26,7 +26,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id/delete', async (req, res, next) => {
   const id = req.params.id;
   await pool.promise()
-  .query('DELETE FROM meeps WHERE id = ?', [id])
+  .query('DELETE FROM limmuy_meeps WHERE id = ?', [id])
   .then((response) => {
     if (response[0].affectedRows == 1) {
       res.redirect('/meeps');
@@ -55,7 +55,7 @@ router.post('/', async (req, res, next) => {
   }
 
   await pool.promise()
-  .query('INSERT INTO meeps (body) VALUES (?)', [meep])
+  .query('INSERT INTO limmuy_meeps (body) VALUES (?)', [meep])
   .then((response) => {
     console.log(response[0].affectedRows);
     if (response[0].affectedRows == 1) {
@@ -85,7 +85,7 @@ router.post('/:id/edit', async (req, res, next) => {
     });
   }
   await pool.promise()
-  .query('UPDATE meeps SET body = ?, edited = now() WHERE id = ?', [meep, id])
+  .query('UPDATE limmuy_meeps SET body = ?, edited = now() WHERE id = ?', [meep, id])
   .then((response) => {
     console.log(response);
     res.redirect('/meeps');
