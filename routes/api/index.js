@@ -5,7 +5,7 @@ const pool = require('../../database');
 router.get('/meeps', async (req, res) => {
     await pool
     .promise()
-    .query(`SELECT id, name FROM ${process.env.TABLE_PREFIX}meeps`)
+    .query(`SELECT id, body FROM limmuy_meeps`)
     .then(([rows]) => {
         if(rows.length === 0) {
             return res.json({
